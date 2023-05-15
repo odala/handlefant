@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next",
     "build": "prisma generate && next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,10 @@
   "devDependencies": {
     "@types/node": "17.0.14",
     "@types/react": "17.0.38",
+    "eslint": "8.40.0",
+    "eslint-config-next": "13.4.2",
+    "eslint-config-prettier": "^8.8.0",
+    "prettier": "2.8.8",
     "prisma": "^4.14.0",
     "typescript": "4.5.5"
   }
