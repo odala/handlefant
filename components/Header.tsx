@@ -1,52 +1,18 @@
-import React from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import React from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const Header: React.FC = () => {
-  const router = useRouter();
+  const router = useRouter()
   const isActive: (pathname: string) => boolean = (pathname) =>
-    router.pathname === pathname;
+    router.pathname === pathname
 
   let left = (
     <div className="left">
-      <Link href="/">
-        <a className="bold" data-active={isActive("/")}>
+      <Link href="/old" legacyBehavior>
+        <a className="bold" data-active={isActive('/old')}>
           Feed
         </a>
-      </Link>
-      <style jsx>{`
-        .bold {
-          font-weight: bold;
-        }
-
-        a {
-          text-decoration: none;
-          color: var(--geist-foreground);
-          display: inline-block;
-        }
-
-        .left a[data-active="true"] {
-          color: gray;
-        }
-
-        a + a {
-          margin-left: 1rem;
-        }
-      `}</style>
-    </div>
-  );
-
-  let right = null;
-
-  left = (
-    <div className="left">
-      <Link href="/">
-        <a className="bold" data-active={isActive('/')}>
-          Feed
-        </a>
-      </Link>
-      <Link href="/drafts">
-        <a data-active={isActive("/drafts")}>My drafts</a>
       </Link>
       <style jsx>{`
         .bold {
@@ -68,14 +34,48 @@ const Header: React.FC = () => {
         }
       `}</style>
     </div>
-  );
+  )
+
+  let right = null
+
+  left = (
+    <div className="left">
+      <Link href="/old" legacyBehavior>
+        <a className="bold" data-active={isActive('/old')}>
+          Feed
+        </a>
+      </Link>
+      <Link href="/drafts" legacyBehavior>
+        <a data-active={isActive('/drafts')}>My drafts</a>
+      </Link>
+      <style jsx>{`
+        .bold {
+          font-weight: bold;
+        }
+
+        a {
+          text-decoration: none;
+          color: var(--geist-foreground);
+          display: inline-block;
+        }
+
+        .left a[data-active='true'] {
+          color: gray;
+        }
+
+        a + a {
+          margin-left: 1rem;
+        }
+      `}</style>
+    </div>
+  )
   right = (
     <div className="right">
-      <Link href="/create">
+      <Link href="/create" legacyBehavior>
         <button>
           <a>New post</a>
         </button>
-      </Link>      
+      </Link>
       <style jsx>{`
         a {
           text-decoration: none;
@@ -108,7 +108,7 @@ const Header: React.FC = () => {
         }
       `}</style>
     </div>
-  );
+  )
 
   return (
     <nav>
@@ -122,7 +122,7 @@ const Header: React.FC = () => {
         }
       `}</style>
     </nav>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
